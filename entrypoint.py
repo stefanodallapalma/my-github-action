@@ -19,7 +19,7 @@ g = Github(os.getenv('GITHUB_TOKEN'))
 repo = g.get_repo(os.getenv('GITHUB_REPOSITORY'))
 files = repo.get_commit(sha=os.getenv('GITHUB_SHA')).files
 
-print(os.getenv("API_URL"))
+print(os.getenv("INPUT_URL"))
 
 for file in files:
     
@@ -32,7 +32,7 @@ for file in files:
     else:
         continue
 
-    url = f'{os.getenv("API_URL")}/predict?model_id={os.getenv("INPUT_MODEL")}'
+    url = f'{os.getenv("INPUT_URL")}/predict?model_id={os.getenv("INPUT_MODEL")}'
     
     for name, value in metrics.items():
         url += f'&{name}={value}'
@@ -41,4 +41,4 @@ for file in files:
     
     if response.status_code and response.status_code == 200:
         response_content = json.loads(response.content.decode())
-        print(response_content)
+        print(file.filename, ':', response_content)

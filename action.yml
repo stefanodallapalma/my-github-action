@@ -8,7 +8,7 @@ inputs:
   language:
     description: 'The language for the prediction'
     required: true
-  api-url:
+  url:
     description: 'The API URL'
     required: true
 runs:
@@ -17,4 +17,4 @@ runs:
   args:
     - ${{ inputs.model }}
     - ${{ inputs.language }}
-    - ${{ inputs.api-url }}
+    - ${{ inputs.url }}
