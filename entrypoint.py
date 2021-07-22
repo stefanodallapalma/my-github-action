@@ -11,7 +11,6 @@ from repominer import filters
 from ansiblemetrics.metrics_extractor import extract_all as extract_ansible_metrics 
 from toscametrics.metrics_extractor import extract_all as extract_tosca_metrics 
 
-model_id = os.getenv('INPUT_MODEL')
 language = os.getenv('INPUT_LANGUAGE')
 
 # using an access token
@@ -19,6 +18,8 @@ g = Github(os.getenv('GITHUB_TOKEN'))
 
 repo = g.get_repo(os.getenv('GITHUB_REPOSITORY'))
 files = repo.get_commit(sha=os.getenv('GITHUB_SHA')).files
+
+print(os.getenv("API_URL"))
 
 for file in files:
     
@@ -31,7 +32,7 @@ for file in files:
     else:
         continue
 
-    url = f'https://radon-defect-prediction.herokuapp.com/predictions?language={os.getenv("INPUT_LANGUAGE")}&model_id={os.getenv("INPUT_MODEL")}'
+    url = f'{os.getenv("API_URL")}/predict?model_id={os.getenv("INPUT_MODEL")}'
     
     for name, value in metrics.items():
         url += f'&{name}={value}'
