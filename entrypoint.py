@@ -26,7 +26,6 @@ files = repo.get_commit(sha=os.getenv('GITHUB_SHA')).files
 for file in files:
     
     content = repo.get_contents(file.filename).decoded_content.decode()
-    print(content)
 
     if language == 'ansible' and filters.is_ansible_file(file.filename):
         metrics = extract_ansible_metrics(content)
@@ -35,4 +34,14 @@ for file in files:
     else:
         continue
 
-    print(metrics)
+
+    url = 'https://radon-defect-prediction.herokuapp.com/predictions?language=ansible&model_id=24242603'
+    
+    for name, value in metrics.items():
+        url += f'&{name}={value}'
+
+    response = requests.get(url)
+    print(response.status_code)
+    
+    if response.status_code and response.status_code == 200:
+        print(response.content)
