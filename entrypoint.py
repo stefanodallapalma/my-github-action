@@ -31,7 +31,7 @@ for file in files:
     else:
         continue
 
-    url = f'https://radon-defect-prediction.herokuapp.com/predictions?language={os.getenv('INPUT_LANGUAGE')}&model_id={os.getenv('INPUT_MODEL')}'
+    url = f'https://radon-defect-prediction.herokuapp.com/predictions?language={os.getenv("INPUT_LANGUAGE")}&model_id={os.getenv("INPUT_MODEL")}'
     
     for name, value in metrics.items():
         url += f'&{name}={value}'

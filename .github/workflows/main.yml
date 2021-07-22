@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Defect Prediction
         id: hello
-        uses: stefanodallapalma/my-github-action@v25
+        uses: stefanodallapalma/my-github-action@v26
         with:
           model: '24242603'
           language: 'ansible'
