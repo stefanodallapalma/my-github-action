@@ -7,4 +7,4 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: stefanodallapalma/my-github-action@v4
+        uses: stefanodallapalma/my-github-action@v5
