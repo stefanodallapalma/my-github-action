@@ -1,13 +1,13 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  defect_prediction_job:
     runs-on: ubuntu-latest
     name: Run DEFUSE's conditional model for Ansible
     steps:
       - name: Defect Prediction
-        id: hello
-        uses: stefanodallapalma/my-github-action@v34
+        id: defect_prediction
+        uses: stefanodallapalma/my-github-action@v35
         with:
           model: 'NEWEKjxoBvRdTopqjjKW'
           language: 'ansible'

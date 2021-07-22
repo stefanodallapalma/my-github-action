@@ -38,7 +38,8 @@ for file in files:
         url += f'&{name}={value}'
 
     response = requests.get(url)
-    
+    print(response)
+    print(response.content)
     if response.status_code and response.status_code == 200:
         response_content = json.loads(response.content.decode())
         print(file.filename, ':', response_content)
