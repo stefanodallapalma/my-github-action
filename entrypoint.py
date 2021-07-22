@@ -2,6 +2,8 @@
 
 import os
 
-# name = os.getenv('INPUT_NAME')
+model_id = os.getenv('INPUT_MODEL')
+language = os.getenv('INPUT_LANGUAGE')
 
-print('Hello World')
+print('Model', model_id)
+print('Language', language)
