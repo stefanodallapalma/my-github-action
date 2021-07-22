@@ -5,19 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-
-      - name: get changed files
-        id: getfiles
-        run: |
-          echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | xargs)"
-
-      - name: echo output
-        run: |
-          echo ${{ steps.getfiles.outputs.files }}
-
       - name: Hello world action step
         id: hello
-        uses: stefanodallapalma/my-github-action@v18
+        uses: stefanodallapalma/my-github-action@v19
         with:
           model: 'model1234'
           language: 'ansible'

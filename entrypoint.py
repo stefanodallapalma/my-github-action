@@ -3,12 +3,23 @@
 import os
 import subprocess
 
+from github import Github
+
+
 model_id = os.getenv('INPUT_MODEL')
 language = os.getenv('INPUT_LANGUAGE')
 
 print('Model', model_id)
 print('Language', language)
 
-# cmd='git diff --name-only 27efb55d3576ec8844b274eec7527909758b2a6a 97d8f06cd2b35842fb90fea9e39a3cc734f6bda2'
+
+# using an access token
+g = Github(os.getenv('GITHUB_TOKEN'))
+
+repo = g.get_repo(os.getenv('GITHUB_REPOSITORY'))
+files = repo.get_commit(sha=os.getenv('GITHUB_SHA')).files
+print(files)
+
+# cmd='curl -s https://api.github.com/ENDPOINT | jq -r '.files | .[] | select(.status == "modified") | .filename''
 # result=subprocess.getoutput(cmd)
 # print("result::",result)
