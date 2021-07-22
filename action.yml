@@ -4,8 +4,7 @@ description: 'Greet someone and record the time'
 inputs:
   name:  # id of input
     description: 'Who to greet'
-    required: true
-    default: 'World'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'

@@ -2,6 +2,6 @@
 
 import os
 
-name = os.getenv('INPUT_NAME')
+# name = os.getenv('INPUT_NAME')
 
-print('Hello', name)
+print('Hello World')
