@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: stefanodallapalma/my-github-action@v21
+        uses: stefanodallapalma/my-github-action@v22
         with:
           model: 'model1234'
           language: 'ansible'

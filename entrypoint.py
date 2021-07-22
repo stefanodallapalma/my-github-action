@@ -28,7 +28,7 @@ for file in files:
     content = repo.get_contents(file.filename).decoded_content
     print(content)
     print('-------------')
-    print(decoded_content)
+    print(repo.get_contents(file.filename).content)
 
     if language == 'ansible' and filters.is_ansible_file(file.filename):
         metrics = extract_ansible_metrics(content)
