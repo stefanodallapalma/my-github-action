@@ -9,6 +9,6 @@ language = os.getenv('INPUT_LANGUAGE')
 print('Model', model_id)
 print('Language', language)
 
-string='echo CIAO && ls'
-result=subprocess.getoutput(string)
-print("result::: ",result)
+cmd='git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | xargs'
+result=subprocess.getoutput(cmd)
+print("result::",result)
