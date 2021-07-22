@@ -9,6 +9,6 @@ language = os.getenv('INPUT_LANGUAGE')
 print('Model', model_id)
 print('Language', language)
 
-cmd='git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | xargs'
+cmd='git diff --name-only ${{ github.event.before }} ${{ github.sha }}'
 result=subprocess.getoutput(cmd)
 print("result::",result)
