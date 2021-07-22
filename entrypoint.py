@@ -1,5 +1,6 @@
 #!/bin/python3
 
+import json
 import os
 import requests
 import subprocess
@@ -12,10 +13,6 @@ from toscametrics.metrics_extractor import extract_all as extract_tosca_metrics
 
 model_id = os.getenv('INPUT_MODEL')
 language = os.getenv('INPUT_LANGUAGE')
-
-print('Model', model_id)
-print('Language', language)
-
 
 # using an access token
 g = Github(os.getenv('GITHUB_TOKEN'))
@@ -34,14 +31,13 @@ for file in files:
     else:
         continue
 
-
-    url = 'https://radon-defect-prediction.herokuapp.com/predictions?language=ansible&model_id=24242603'
+    url = f'https://radon-defect-prediction.herokuapp.com/predictions?language={os.getenv('INPUT_LANGUAGE')}&model_id={os.getenv('INPUT_MODEL')}'
     
     for name, value in metrics.items():
         url += f'&{name}={value}'
 
     response = requests.get(url)
-    print(response.status_code)
     
     if response.status_code and response.status_code == 200:
-        print(response.content)
+        response_content = json.loads(response.content.decode())
+        print(response_content)

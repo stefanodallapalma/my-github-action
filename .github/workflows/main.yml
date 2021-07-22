@@ -3,11 +3,11 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Run DEFUSE's conditional model for Ansible
     steps:
-      - name: Hello world action step
+      - name: Defect Prediction
         id: hello
-        uses: stefanodallapalma/my-github-action@v24
+        uses: stefanodallapalma/my-github-action@v25
         with:
-          model: 'model1234'
+          model: '24242603'
           language: 'ansible'
