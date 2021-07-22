@@ -7,3 +7,5 @@ language = os.getenv('INPUT_LANGUAGE')
 
 print('Model', model_id)
 print('Language', language)
+
+print(os.listdir())

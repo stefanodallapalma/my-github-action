@@ -7,6 +7,8 @@ RUN apt-get update \
   && ln -s /usr/bin/python3 python \
   && pip3 install --upgrade pip
 
+RUN pip install -r requirements.txt
+
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.py /entrypoint.py
 
